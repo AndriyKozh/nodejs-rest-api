@@ -1,3 +1,4 @@
 const getCurrent = require("./current");
+const updateAvater = require("./updateAvatar");
 
-module.exports = { getCurrent };
+module.exports = { getCurrent, updateAvater };
