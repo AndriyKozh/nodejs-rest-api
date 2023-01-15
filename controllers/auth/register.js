@@ -1,6 +1,7 @@
 const { Users } = require("../../models/users");
 const bcrypt = require("bcryptjs");
 const { Conflict } = require("http-errors");
+const gravatar = require("gravatar");
 
 const register = async (req, res) => {
   const { name, email, password } = req.body;
@@ -14,8 +15,12 @@ const register = async (req, res) => {
   }
   // Хешування коду та сіль
   const hashPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+
+  // створюємо gravatar
+  const avatarURL = gravatar.url(email);
+
   //   Створюємо нового користувача
-  await Users.create({ name, email, password: hashPassword });
+  await Users.create({ name, email, password: hashPassword, avatarURL });
 
   res.status(201).json({
     status: "success",
@@ -23,7 +28,7 @@ const register = async (req, res) => {
     data: {
       name,
       email,
-      password,
+      avatarURL,
     },
   });
 };
