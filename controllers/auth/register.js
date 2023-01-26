@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const { Conflict } = require("http-errors");
 const gravatar = require("gravatar");
 const { v4: uuidv4 } = require("uuid");
+
 const { sendGridEmail } = require("../../helpers");
 
 const register = async (req, res) => {
