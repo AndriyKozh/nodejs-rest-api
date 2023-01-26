@@ -14,6 +14,8 @@ router.patch(
   ctrlWrapper(ctrl.updateAvater)
 );
 
+router.get("/verify/:verificationToken", ctrlWrapper(ctrl.verifyEmail));
+
 //  добавляємо шлях /avatar з всіма мідлварами
 
 module.exports = router;
